@@ -4,36 +4,41 @@
 
     <preview :preview="preview"></preview>
 
-    <empire-info></empire-info>
-    <ethos-picker :chosen-ethics.sync="chosenEthics"></ethos-picker>
-    <government-picker :chosen-ethics="chosenEthics"></government-picker>
-    <trait-picker></trait-picker>
-    <app-footer></app-footer>
+    <ul class="Navigation">
+      <li class="Navigation__item">
+        <a v-link="{ name: 'editor', exact: true }" class="Navigation__item__link">Editor</a>
+      </li>
+      <li class="Navigation__item">
+        <a v-link="{ name: 'review' }" class="Navigation__item__link">View Empire</a>
+      </li>
+    </ul>
+
+    <router-view
+      :species-name.sync="speciesName"
+      :empire-name.sync="empireName"
+      :chosen-ethics.sync="chosenEthics"
+      :chosen-government.sync="chosenGovernment"
+      :chosen-traits.sync="chosenTraits"
+    ></router-view>
   </div>
 </template>
 
 <script>
 import Preview from './components/Preview'
-import EmpireInfo from './components/EmpireInfo'
-import EthosPicker from './components/EthosPicker'
-import GovernmentPicker from './components/GovernmentPicker'
-import TraitPicker from './components/TraitPicker'
-import AppFooter from './components/AppFooter'
 
 export default {
   components: {
     Preview,
-    EmpireInfo,
-    EthosPicker,
-    GovernmentPicker,
-    TraitPicker,
-    AppFooter
   },
 
   data() {
     return {
       preview: {},
-      chosenEthics: []
+      speciesName: '',
+      empireName: '',
+      chosenEthics: [],
+      chosenGovernment: [],
+      chosenTraits: [],
     }
   },
 
@@ -75,4 +80,28 @@ body {
 
 .green { color: green; }
 .red { color: red; }
+
+.Navigation {
+  width: 100%;
+  padding-left: 0;
+  list-style: none;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.Navigation__item { line-height: 60px; }
+
+.Navigation__item__link {
+  padding: 15px;
+  text-decoration: none;
+  color: #0065AD;
+}
+
+.Navigation__item__link--current {
+  border: 2px solid #0065AD;
+  border-radius: 3px;
+}
+
+.Navigation__item:not(:first-child) { margin-left: 20px; }
 </style>

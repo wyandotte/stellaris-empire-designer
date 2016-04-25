@@ -13,7 +13,7 @@
       <ul class="Ethos__list" v-for="trait in type.components">
         <li :class="['Ethos__list__item', { 'Ethos__list__item--locked': isLocked(trait), 'Ethos__list__item--selected': trait.active }]" @click="pickTrait(trait)" @mouseover="updatePreview(trait)">
           <img :src="trait.image" :alt="trait.name" class="Ethos__image">
-          <span>{{ trait.name }}</span>
+          <span>{{ trait.name }}</span> <span class="cost">{{ trait.cost}}</span>
         </li>
       </ul>
     </div>
@@ -26,6 +26,8 @@ import Chosen from './Chosen'
 import _ from 'lodash';
 
 export default {
+  props: ['chosenTraits'],
+
   components: { Chosen },
 
   data () {
@@ -369,10 +371,7 @@ export default {
             },
           ]
         },
-
       ],
-
-      chosenTraits: []
     }
   },
   methods: {
@@ -451,5 +450,10 @@ export default {
 
   @media only screen and (max-width: 500px) {
     .Trait { width: 100%; }
+  }
+
+  .cost {
+    font-size: 0.9rem;
+    color: #888;
   }
 </style>

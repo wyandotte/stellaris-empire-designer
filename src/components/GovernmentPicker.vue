@@ -23,7 +23,10 @@ import Chosen from './Chosen'
 import _ from 'lodash'
 
 export default {
-  props: ['chosenEthics'],
+  props: [
+    'chosenEthics',
+    'chosenGovernment'
+  ],
 
   components: { Chosen },
 
@@ -247,9 +250,7 @@ export default {
             },
           ]
         },
-      ],
-
-      chosenGovernment: null
+      ]
     }
   },
   methods: {

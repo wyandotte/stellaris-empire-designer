@@ -1,5 +1,5 @@
 <template>
-  <div class="Chosen">
+  <div class="Chosen" v-if="data">
     <div v-if="data.name">
       {{ data.name }}
 
