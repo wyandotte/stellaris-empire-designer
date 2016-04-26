@@ -32,10 +32,6 @@ export default {
 
   data () {
     return {
-      points: 2,
-
-      choices: 4 - this.chosenTraits.length,
-
       traits: [
         {
           name: 'Positive',
@@ -346,9 +342,19 @@ export default {
     }
   },
 
-  ready() {
-    for (let trait of this.chosenTraits) {
-      this.points -= trait.cost;
+  computed: {
+    points() {
+      let points = 2;
+
+      for (let trait of this.chosenTraits) {
+        points -= trait.cost;
+      }
+
+      return points;
+    },
+
+    choices() {
+      return 4 - this.chosenTraits.length;
     }
   },
 
@@ -379,18 +385,10 @@ export default {
       if (! this.isLocked(trait)) {
         // De-select if selected
         if (this.isActive(trait)) {
-          this.points += trait.cost;
-
-          this.choices += 1;
-
           this.deleteFromChosenTraits(trait);
         } else {
           if (((this.points - trait.cost) >= 0) && (this.choices - 1) >= 0) {
             this.chosenTraits.push(trait);
-
-            this.points -= trait.cost;
-
-            this.choices -= 1;
           }
         }
       }

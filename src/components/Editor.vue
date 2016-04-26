@@ -40,13 +40,7 @@ import AppFooter from './AppFooter'
 
    methods: {
      reset() {
-       this.speciesName = '';
-       this.empireName = '';
-       this.chosenEthics = [];
-       this.chosenGovernment = [];
-       this.chosenTraits = [];
-
-       this.$dispatch('preview', {});
+       this.$dispatch('reset');
      },
 
      save() {

@@ -32,10 +32,6 @@ export default {
 
   data () {
     return {
-      points: 3,
-
-      preview: {},
-
       ethics: [
         {
           name: 'Collectivist - Individualist',
@@ -251,9 +247,14 @@ export default {
     }
   },
 
-  ready() {
-    for (let ethos of this.chosenEthics) {
-      this.points -= ethos.points;
+  computed: {
+    points() {
+      let points = 3;
+      for (let ethos of this.chosenEthics) {
+        points -= ethos.points;
+      }
+
+      return points;
     }
   },
 
@@ -265,8 +266,6 @@ export default {
     pickEthos (ethos) {
       // De-select if selected
       if (this.isActive(ethos)) {
-        this.points += ethos.points;
-
         this.deleteFromChosenEthics(ethos);
       } else {
         let sameType = _.find(this.chosenEthics, {type: ethos.type});
@@ -297,8 +296,6 @@ export default {
     addEthos(ethos) {
       // Add new ethos to chosen ethics
       this.chosenEthics.push(ethos);
-
-      this.points -= ethos.points;
     },
 
     deleteSameType(ethos) {
@@ -306,8 +303,6 @@ export default {
       let sameType = _.find(this.chosenEthics, {type: ethos.type});
 
       if(sameType) {
-        this.points += sameType.points;
-
         _.remove(this.chosenEthics, function(item) {
           return item.type === ethos.type;
         });

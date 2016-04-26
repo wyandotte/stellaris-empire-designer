@@ -48,6 +48,16 @@ export default {
   events: {
     preview(item) {
       this.preview = item;
+    },
+
+    reset() {
+      this.speciesName = '';
+      this.empireName = '';
+      this.chosenEthics = [];
+      this.chosenGovernment = [];
+      this.chosenTraits = [];
+
+      this.preview = {};
     }
   }
 }
