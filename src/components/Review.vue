@@ -1,5 +1,7 @@
 <template>
-  <div v-if="nothingFilledOut" class="Review__help">
+  <a href="#" class="Button" v-if="empireName && speciesName" @click="saveEmpire()" @mouseover="updatePreview({name: 'Save Empire', description: 'An exisiting empire with the same name will be overwritten'})">Save</a>
+
+  <div v-show="nothingFilledOut" class="Review__help">
     Here all aspects of your Empire will be shown.
   </div>
 
@@ -42,6 +44,31 @@
     },
 
     methods: {
+      saveEmpire() {
+        let key = null;
+
+        for (let i = 0; i < localStorage.length; i++ ) {
+          let item = JSON.parse(localStorage.getItem(localStorage.key(i)));
+          if (item.empireName === this.empireName) {
+            key = item.key;
+          }
+        }
+
+        if (!key) {
+          key = 'empire_' + (localStorage.length + 1);
+        }
+
+        localStorage.setItem(key, JSON.stringify({
+          version: 1,
+          key: key,
+          speciesName: this.speciesName,
+          empireName: this.empireName,
+          chosenEthics: this.chosenEthics,
+          chosenGovernment: this.chosenGovernment,
+          chosenTraits: this.chosenTraits
+        }));
+      },
+
       updatePreview(item) {
         this.$dispatch('preview', item);
       }
@@ -49,6 +76,8 @@
   }
 </script>
 
-<style>
+<style scoped>
   .Review__help { text-align: center; }
+
+  .Button { float: right; }
 </style>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App'
 import Editor from './components/Editor'
 import Review from './components/Review'
+import Saved from './components/Saved'
 
 import Router from 'vue-router'
 
@@ -21,6 +22,10 @@ router.map({
   '/review/': {
     name: 'review',
     component: Review
+  },
+  '/saved/': {
+    name: 'saved',
+    component: Saved
   }
 })
 

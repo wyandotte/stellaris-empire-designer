@@ -1,10 +1,15 @@
 <template>
+  <p class="Buttons">
+    <a class="Button Button--delete" @click="reset()" @mouseover="$dispatch('preview', {'name': 'Clear selection', description: 'This will reset everything'})" v-if="empireName || speciesName || chosenEthics.length > 0 || chosenGovernment.length > 0 || chosenTraits.length > 0">Reset</a>
+    <a class="Button" @click="save()" @mouseover="$dispatch('preview', {'name': 'Save Empire', description: 'An exisiting empire with the same name will be overwritten'})" v-if="empireName || speciesName">Save</a>
+  </p>
+
   <empire-info :species-name.sync="speciesName" :empire-name.sync="empireName"></empire-info>
   <ethos-picker :chosen-ethics.sync="chosenEthics"></ethos-picker>
   <government-picker :chosen-ethics="chosenEthics" :chosen-government.sync="chosenGovernment"></government-picker>
   <trait-picker :chosen-traits.sync="chosenTraits"></trait-picker>
 
-  <a v-link="{ name: 'review' }" class="Button">View empire</a>
+  <a v-link="{ name: 'review' }" class="Button Button--block" @click="$dispatch('preview', {})">View empire</a>
 
   <app-footer></app-footer>
 </template>
@@ -33,24 +38,51 @@ import AppFooter from './AppFooter'
      AppFooter,
    },
 
-   data() {
-     return {
+   methods: {
+     reset() {
+       this.speciesName = '';
+       this.empireName = '';
+       this.chosenEthics = [];
+       this.chosenGovernment = [];
+       this.chosenTraits = [];
+
+       this.$dispatch('preview', {});
+     },
+
+     save() {
+       let key = null;
+
+       for (let i = 0; i < localStorage.length; i++ ) {
+         let item = JSON.parse(localStorage.getItem(localStorage.key(i)));
+         if (item.empireName === this.empireName) {
+           key = item.key;
+         }
+       }
+
+       if (!key) {
+         key = 'empire_' + (localStorage.length + 1);
+       }
+
+       localStorage.setItem(key, JSON.stringify({
+         version: 1,
+         key: key,
+         speciesName: this.speciesName,
+         empireName: this.empireName,
+         chosenEthics: this.chosenEthics,
+         chosenGovernment: this.chosenGovernment,
+         chosenTraits: this.chosenTraits
+       }));
      }
    }
  }
 </script>
 
-<style>
-  .Button {
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 3px;
-    font-size: 1.2rem;
-    background-color: #61BD6D;
-    text-decoration: none;
-    color: #2c3e50;
-    text-align: center;
+<style scoped>
+  p.Buttons {
+    display: flex;
+    justify-content: center;
+    margin: 30px;
   }
+
+  .Button:not(:first-child) { margin-left: 20px; }
 </style>

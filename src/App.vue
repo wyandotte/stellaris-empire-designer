@@ -6,10 +6,13 @@
 
     <ul class="Navigation">
       <li class="Navigation__item">
-        <a v-link="{ name: 'editor', exact: true }" class="Navigation__item__link">Editor</a>
+        <a v-link="{ name: 'editor', exact: true }" class="Navigation__item__link" @click="preview = {}">Editor</a>
       </li>
       <li class="Navigation__item">
-        <a v-link="{ name: 'review' }" class="Navigation__item__link">View Empire</a>
+        <a v-link="{ name: 'review' }" class="Navigation__item__link" @click="preview = {}">View Empire</a>
+      </li>
+      <li class="Navigation__item">
+        <a v-link="{ name: 'saved' }" class="Navigation__item__link" @click="preview = {}">Saved</a>
       </li>
     </ul>
 
@@ -104,4 +107,26 @@ body {
 }
 
 .Navigation__item:not(:first-child) { margin-left: 20px; }
+
+.Button {
+  padding: 15px;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  background-color: #61BD6D;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.Button:hover { background-color: #39BA48; }
+
+.Button--block {
+  margin-top: 20px;
+  display: block;
+  margin: 0 auto;
+}
+
+.Button--delete { background-color: #D10000; }
+.Button--delete:hover { background-color: #AA0000; }
 </style>

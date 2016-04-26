@@ -8,7 +8,7 @@
       <h3>{{ type.name }}</h3>
 
       <ul class="Ethos__list" v-for="government in type.components">
-        <li :class="['Ethos__list__item', { 'Ethos__list__item--locked': isLocked(government), 'Ethos__list__item--selected': government.active }]" @click="pickGovernment(government)" @mouseover="updatePreview(government)">
+        <li :class="['Ethos__list__item', { 'Ethos__list__item--locked': isLocked(government), 'Ethos__list__item--selected': isActive(government) }]" @click="pickGovernment(government)" @mouseover="updatePreview(government)">
           <img :src="government.image" :alt="government.name" class="Ethos__image">
           <span>{{ government.name }}</span>
         </li>
@@ -43,7 +43,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/4/4c/Military_Dictatorship.png',
               unlocked: ['Militarist', 'Fanatic Militarist'],
               locked: ['Individualist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Fleet Size Limit', value: 10, positive: true},
                 { name: 'Ship Upkeep', value: -10, postfix: '%', positive: true},
@@ -58,7 +57,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/7/7f/Divine_Mandate.png',
               unlocked: ['Spiritualist', 'Fanatic Spiritualist'],
               locked: ['Individualist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Slavery Tolerance', value: 50, postfix: '%', positive: true},
                 { name: 'Resettlement Cost', value: -15, postfix: '%', positive: true},
@@ -72,7 +70,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/a/a7/Despotic_Hegemony.png',
               unlocked: ['Materialist', 'Fanatic Materialist'],
               locked: ['Individualist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Research Speed', value: 5, postfix: '%', positive: true},
                 { name: 'Survey Speed', value: 10, postfix: '%', positive: true},
@@ -86,7 +83,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/2/2b/Enlightened_Monarchy.png',
               unlocked: ['Pacifist', 'Fanatic Pacifist'],
               locked: ['Individualist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Edict Cost', value: -25, postfix: '%', positive: true},
                 { name: 'Planetary Edict Duration', value: 25, postfix: '%', positive: true},
@@ -101,7 +97,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/1/1d/Despotic_Empire.png',
               unlocked: [],
               locked: ['Individualist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Building Cost', value: -15, postfix: '%', positive: true},
                 { name: 'Slave Mineral Output', value: 10, postfix: '%', positive: true},
@@ -121,7 +116,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/9/9a/Military_Junta.png',
               unlocked: ['Militarist', 'Fanatic Militarist'],
               locked: ['Fanatic Collectivist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Ship Cost', value: -10, postfix: '%', positive: true},
                 { name: 'Ship Upgrade Cost', value: -25, postfix: '%', positive: true},
@@ -135,7 +129,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/5/57/Theocratic_Oligarchy.png',
               unlocked: ['Spiritualist', 'Fanatic Spiritualist'],
               locked: ['Fanatic Collectivist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Ethics Divergence', value: -10, postfix: '%', positive: true},
               ]
@@ -147,7 +140,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/c/cd/Science_Directorate.png',
               unlocked: ['Materialist', 'Fanatic Materialist'],
               locked: ['Fanatic Collectivist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Research alternatives', value: 1, positive: true},
                 { name: 'Scientists are eligible for rulership'},
@@ -160,7 +152,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/c/cd/Peaceful_Bureaucracy.png',
               unlocked: ['Pacifist', 'Fanatic Pacifist'],
               locked: ['Fanatic Collectivist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Leader capacity', value: 4, positive: true},
                 { name: 'Leader Recruitment Cost', value: -15, postfix: '%', positive: true},
@@ -173,7 +164,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/3/3e/Plutocratic_Oligarchy.png',
               unlocked: [],
               locked: ['Fanatic Collectivist', 'Fanatic Individualist'],
-              active: false,
               effects: [
                 { name: 'Energy credits', value: 5, postfix: '%', positive: true},
                 { name: 'Minerals', value: 5, postfix: '%', positive: true},
@@ -191,7 +181,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/b/b8/Military_Republic.png',
               unlocked: ['Militarist', 'Fanatic Militarist'],
               locked: ['Collectivist', 'Fanatic Collectivist'],
-              active: false,
               effects: [
                 { name: 'Army Upkeep', value: -15, postfix: '%', positive: true},
                 { name: 'Ship Upkeep', value: -15, postfix: '%', positive: true},
@@ -206,7 +195,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/9/9f/Theocratic_Republic.png',
               unlocked: ['Spiritualist', 'Fanatic Spiritualist'],
               locked: ['Collectivist', 'Fanatic Collectivist'],
-              active: false,
               effects: [
                 { name: 'Ethics Divergence', value: -10, postfix: '%', positive: true},
               ]
@@ -218,7 +206,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/0/02/Direct_Democracy.png',
               unlocked: ['Materialist', 'Fanatic Materialist'],
               locked: ['Collectivist', 'Fanatic Collectivist'],
-              active: false,
               effects: [
                 { name: ' Core Sector Planets', value: 4, positive: true},
               ]
@@ -230,7 +217,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/6/67/Moral_Democracy.png',
               unlocked: ['Pacifist', 'Fanatic Pacifist'],
               locked: ['Collectivist', 'Fanatic Collectivist'],
-              active: false,
               effects: [
                 { name: 'Happiness', value: 10, postfix: '%', positive: true},
               ]
@@ -242,7 +228,6 @@ export default {
               image: 'http://www.stellariswiki.com/images/a/a1/Indirect_Democracy.png',
               unlocked: [],
               locked: ['Collectivist', 'Fanatic Collectivist'],
-              active: false,
               effects: [
                 { name: 'Leader Skill Levels', value: 1, positive: true},
                 { name: 'Leader Recruitment Costs', value: -10, postfix: '%', positive: true},
@@ -254,6 +239,14 @@ export default {
     }
   },
   methods: {
+    isActive(government) {
+      if (this.chosenGovernment !== null) {
+        return this.chosenGovernment.name === government.name;
+      }
+
+      return false;
+    },
+
     isLocked (government) {
       let vm = this;
 
@@ -285,16 +278,8 @@ export default {
 
     pickGovernment(government) {
       if (! this.isLocked(government)) {
-        government.active = true;
-
-        if (this.chosenGovernment !== null) {
-          this.chosenGovernment.active = false;
-
-          if (this.chosenGovernment.name === government.name) {
-            this.chosenGovernment = null;
-          } else {
-            this.chosenGovernment = government;
-          }
+        if (this.chosenGovernment && this.chosenGovernment.name === government.name) {
+          this.chosenGovernment = [];
         } else {
           this.chosenGovernment = government;
         }
