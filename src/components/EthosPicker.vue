@@ -238,7 +238,7 @@ export default {
               image: 'http://www.stellariswiki.com/images/1/11/Fanatic_Spiritualist.png',
               points: 2,
               effects: [
-                { name: 'Happiness', value: '5', postfix: '%', positive: true},
+                { name: 'Happiness', value: '10', postfix: '%', positive: true},
               ]
             }
           ]

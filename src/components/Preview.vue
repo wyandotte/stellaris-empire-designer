@@ -73,7 +73,7 @@
   .Preview {
     position: absolute;
     top: 15%;
-    left: 5%;
+    left: 50px;
   }
 
   .Preview__content {
