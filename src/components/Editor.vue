@@ -4,7 +4,7 @@
     <a class="Button" @click="save()" @mouseover="$dispatch('preview', {'name': 'Save Empire', description: 'An exisiting empire with the same name will be overwritten'})" v-if="empireName || speciesName">Save</a>
   </p>
 
-  <empire-info :species-name.sync="speciesName" :empire-name.sync="empireName"></empire-info>
+  <empire-info :species-name.sync="speciesName" :empire-name.sync="empireName" :empire-description.sync="empireDescription"></empire-info>
   <ethos-picker :chosen-ethics.sync="chosenEthics"></ethos-picker>
   <government-picker :chosen-ethics="chosenEthics" :chosen-government.sync="chosenGovernment"></government-picker>
   <trait-picker :chosen-traits.sync="chosenTraits"></trait-picker>
@@ -25,6 +25,7 @@ import AppFooter from './AppFooter'
    props: [
      'speciesName',
      'empireName',
+     'empireDescription',
      'chosenEthics',
      'chosenGovernment',
      'chosenTraits'
@@ -58,10 +59,11 @@ import AppFooter from './AppFooter'
        }
 
        localStorage.setItem(key, JSON.stringify({
-         version: 1,
+         version: 2,
          key: key,
          speciesName: this.speciesName,
          empireName: this.empireName,
+         empireDescription: this.empireDescription,
          chosenEthics: this.chosenEthics,
          chosenGovernment: this.chosenGovernment,
          chosenTraits: this.chosenTraits

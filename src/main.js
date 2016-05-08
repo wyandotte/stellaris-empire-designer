@@ -9,7 +9,6 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 const router = new Router({
-  hashbang: false,
   history: true,
   linkActiveClass: 'Navigation__item__link--current'
 })

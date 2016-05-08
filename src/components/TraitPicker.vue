@@ -53,7 +53,7 @@ export default {
               excludes: [],
               cost: 2,
               effects: [
-                { name: 'Food output', value: 1, positive: true},
+                { name: 'Food', value: 15, postfix: '%', positive: true},
               ]
             },
             {
@@ -63,7 +63,7 @@ export default {
               excludes: ['Repugnant'],
               cost: 1,
               effects: [
-                { name: 'Other Species Happiness', value: 1, postfix: '%', positive: true},
+                { name: 'Other Species Happiness per pop', value: 1, postfix: '%', positive: true},
               ]
             },
             {
@@ -83,7 +83,7 @@ export default {
               excludes: [],
               cost: 2,
               effects: [
-                { name: ' Ethics Divergence', value: -20, postfix: '%', positive: true},
+                { name: 'Ethics Divergence', value: -20, postfix: '%', positive: true},
               ]
             },
             {
@@ -166,6 +166,7 @@ export default {
               cost: 1,
               effects: [
                 { name: 'Migration Time', value: -50, postfix: '%', positive: true},
+                { name: 'Resettlement Cost', value: -33, postfix: '%', positive: true},
               ]
             },
             {
@@ -195,8 +196,8 @@ export default {
               excludes: [],
               cost: 1,
               effects: [
-                { name: 'Militia Health', value: 100, postfix: '%', positive: true},
-                { name: 'Bombardment Resistance', value: 200, postfix: '%', positive: true},
+                { name: 'Garrison Health', value: 100, postfix: '%', positive: true},
+                { name: 'Fortification Defensive Bonus', value: 50, postfix: '%', positive: true},
               ]
             },
             {
@@ -283,7 +284,7 @@ export default {
               excludes: ['Charismatic'],
               cost: -1,
               effects: [
-                { name: 'Other Species Happiness', value: -1, postfix: '%', positive: false},
+                { name: 'Other Species Happiness per pop', value: -1, postfix: '%', positive: false},
               ]
             },
             {
@@ -294,6 +295,7 @@ export default {
               cost: -1,
               effects: [
                 { name: 'Migration Time', value: 50, postfix: '%', positive: false},
+                { name: 'Resettlement Cost', value: 33, postfix: '%', positive: false},
               ]
             },
             {

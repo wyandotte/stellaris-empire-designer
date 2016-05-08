@@ -6,6 +6,9 @@
     <div class="EmpireInfo__item">
       <input type="text" name="speciesName" v-model="speciesName" placeholder="Species name" class="EmpireInfo__item__input">
     </div>
+    <div class="EmpireInfo__item">
+      <textarea type="text" name="empireDescription" v-model="empireDescription" placeholder="Empire description" class="EmpireInfo__item__input" rows="20" maxlength="2000"></textarea>
+    </div>
   </div>
 </template>
 
@@ -13,7 +16,8 @@
 export default {
   props: [
     'speciesName',
-    'empireName'
+    'empireName',
+    'empireDescription',
   ],
 
   data () {
@@ -24,7 +28,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .EmpireInfo { text-align: center; }
 
   .EmpireInfo__item {
@@ -36,5 +40,10 @@ export default {
     padding: 15px;
     border-radius: 3px;
     width: 400px;
+  }
+
+  .EmpireInfo__item textarea::placeholder, .EmpireInfo__item textarea {
+    font-family: sans-serif;
+    font-size: 0.8rem;
   }
 </style>

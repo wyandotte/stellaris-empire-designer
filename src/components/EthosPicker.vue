@@ -44,7 +44,7 @@ export default {
               points: 2,
               effects: [
                 { name: 'Slavery tolerance', value: 100, postfix: '%', positive: true},
-                { name: 'Food requirement', value: -10, postfix: '%', positive: true},
+                { name: 'Food consumption', value: -10, postfix: '%', positive: true},
               ]
             },
             {
@@ -55,7 +55,7 @@ export default {
               points: 1,
               effects: [
                 { name: 'Slavery tolerance', value: 50, postfix: '%', positive: true},
-                { name: 'Food requirement', value: -5, postfix: '%', positive: true},
+                { name: 'Food consumption', value: -5, postfix: '%', positive: true},
               ]
             },
             {
@@ -65,7 +65,7 @@ export default {
               image: 'http://www.stellariswiki.com/images/0/0c/Individualist.png',
               points: 1,
               effects: [
-                { name: 'Energy credits', value: 10, postfix: '%', positive: true},
+                { name: 'Energy Credits', value: 10, postfix: '%', positive: true},
                 { name: 'Slavery tolerance', value: -50, postfix: '%', positive: false},
                 { name: 'Ethics divergence', value: 5, postfix: '%', positive: false},
               ]
@@ -77,7 +77,7 @@ export default {
               image: 'http://www.stellariswiki.com/images/0/0c/Fanatic_Individualist.png',
               points: 2,
               effects: [
-                { name: 'Energy credits', value: 20, postfix: '%', positive: true},
+                { name: 'Energy Credits', value: 20, postfix: '%', positive: true},
                 { name: 'Slavery tolerance', value: -100, postfix: '%', positive: false},
                 { name: 'Ethics divergence', value: 10, postfix: '%', positive: false},
               ]
@@ -94,8 +94,8 @@ export default {
               image: 'http://www.stellariswiki.com/images/8/81/Fanatic_Xenophobe.png',
               points: 2,
               effects: [
+                { name: 'Relations', value: -20, positive: false},
                 { name: 'Alien slavery tolerance', value: 100, postfix: '%', positive: true},
-                { name: 'Xenophobia', value: 20, postfix: '%', positive: false},
               ]
             },
             {
@@ -105,8 +105,8 @@ export default {
               image: 'http://www.stellariswiki.com/images/e/ed/Xenophobe.png',
               points: 1,
               effects: [
+                { name: 'Relations', value: -10, positive: false},
                 { name: 'Alien slavery tolerance', value: 50, postfix: '%', positive: true},
-                { name: 'Xenophobia', value: 10, postfix: '%', positive: false},
               ]
             },
             {
@@ -116,7 +116,7 @@ export default {
               image: 'http://www.stellariswiki.com/images/b/b0/Xenophile.png',
               points: 1,
               effects: [
-                { name: 'Xenophobia', value: -10, postfix: '%', positive: true},
+                { name: 'Relations', value: 10, positive: true},
               ]
             },
             {
@@ -126,7 +126,7 @@ export default {
               image: 'http://www.stellariswiki.com/images/6/68/Fanatic_Xenophile.png',
               points: 2,
               effects: [
-                { name: 'Xenophobia', value: -20, postfix: '%', positive: true},
+                { name: 'Relations', value: 20, positive: true},
               ]
             }
           ]
@@ -142,9 +142,8 @@ export default {
               points: 2,
               effects: [
                 { name: 'Rivalry influence gain', value: 50, postfix: '%', positive: true},
-                { name: 'Alliance cost', value: 75, postfix: '%', positive: false},
+                { name: 'Alliance influence cost', value: 100, postfix: '%', positive: false},
                 { name: 'Army damage', value: 20, postfix: '%', positive: true},
-                { name: 'War tolerance', value: 75, postfix: '%', positive: true},
                 { name: 'War happiness', value: 10, postfix: '%', positive: true},
               ]
             },
@@ -156,9 +155,8 @@ export default {
               points: 1,
               effects: [
                 { name: 'Rivalry influence gain', value: 25, postfix: '%', positive: true},
-                { name: 'Alliance cost', value: 50, postfix: '%', positive: false},
+                { name: 'Alliance influence cost', value: 50, postfix: '%', positive: false},
                 { name: 'Army damage', value: 10, postfix: '%', positive: true},
-                { name: 'War tolerance', value: 50, postfix: '%', positive: true},
                 { name: 'War happiness', value: 5, postfix: '%', positive: true},
               ]
             },
@@ -169,12 +167,11 @@ export default {
               image: 'http://www.stellariswiki.com/images/4/4a/Pacifist.png',
               points: 1,
               effects: [
+                { name: 'Food', value: 10, postfix: '%', positive: true},
+                { name: 'War happiness', value: -10, postfix: '%', positive: false},
                 { name: 'Maximum embassies', value: 1, positive: true},
                 { name: 'Rivalry influence gain', value: -25, postfix: '%', positive: false},
                 { name: 'Army damage', value: -10, postfix: '%', positive: false},
-                { name: 'Food', value: 10, postfix: '%', positive: true},
-                { name: 'War tolerance', value: -25, postfix: '%', positive: false},
-                { name: 'War happiness', value: -10, postfix: '%', positive: false},
               ]
             },
             {
@@ -184,12 +181,11 @@ export default {
               image: 'http://www.stellariswiki.com/images/a/ab/Fanatic_Pacifist.png',
               points: 2,
               effects: [
+                { name: 'Food', value: 20, postfix: '%', positive: true},
+                { name: 'War happiness', value: -20, postfix: '%', positive: false},
                 { name: 'Maximum embassies', value: '2', positive: true},
                 { name: 'Rivalry influence gain', value: -50, postfix: '%', positive: false},
                 { name: 'Army damage', value: -20, postfix: '%', positive: false},
-                { name: 'Food', value: 20, postfix: '%', positive: true},
-                { name: 'War tolerance', value: -50, postfix: '%', positive: false},
-                { name: 'War happiness', value: -20, postfix: '%', positive: false},
               ]
             }
           ]

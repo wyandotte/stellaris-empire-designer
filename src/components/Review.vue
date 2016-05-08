@@ -32,6 +32,7 @@
     props: [
       'speciesName',
       'empireName',
+      'empireDescription',
       'chosenEthics',
       'chosenGovernment',
       'chosenTraits'
@@ -59,10 +60,11 @@
         }
 
         localStorage.setItem(key, JSON.stringify({
-          version: 1,
+          version: 2,
           key: key,
           speciesName: this.speciesName,
           empireName: this.empireName,
+          empireDescription: this.empireDescription,
           chosenEthics: this.chosenEthics,
           chosenGovernment: this.chosenGovernment,
           chosenTraits: this.chosenTraits

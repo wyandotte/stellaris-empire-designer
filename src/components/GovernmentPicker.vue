@@ -44,10 +44,10 @@ export default {
               unlocked: ['Militarist', 'Fanatic Militarist'],
               locked: ['Individualist', 'Fanatic Individualist'],
               effects: [
-                { name: 'Fleet Size Limit', value: 10, positive: true},
-                { name: 'Ship Upkeep', value: -10, postfix: '%', positive: true},
+                { name: 'Naval capacity', value: 20, positive: true},
+                { name: 'Ship Upkeep', value: -5, postfix: '%', positive: true},
                 { name: 'Can build an oversized ship'},
-                { name: 'Admirals/generals are eligible for rulership'},
+                { name: 'Admirals and generals are eligible for rulership'},
               ]
             },
             {
@@ -60,13 +60,13 @@ export default {
               effects: [
                 { name: 'Slavery Tolerance', value: 50, postfix: '%', positive: true},
                 { name: 'Resettlement Cost', value: -15, postfix: '%', positive: true},
-                { name: 'Can build a mausoleum, which grants -10% ethics divergence on the planet on which it is built'},
+                { name: 'Can build a Grand Mausoleum, which grants -10% ethics divergence on the planet on which it is built'},
               ]
             },
             {
               name: 'Despotic Hegemony',
               description: 'This government is a materialistic form of autocracy, where citizens are viewed as little more than cogs in the state machinery. Efficiency and technological progress are valued above all things.',
-              rulerTitle: 'Overseer',
+              rulerTitle: 'Overlord',
               image: 'http://www.stellariswiki.com/images/a/a7/Despotic_Hegemony.png',
               unlocked: ['Materialist', 'Fanatic Materialist'],
               locked: ['Individualist', 'Fanatic Individualist'],
@@ -78,8 +78,8 @@ export default {
             },
             {
               name: 'Enlightened Monarchy',
-              description: '',
-              rulerTitle: '',
+              description: 'This government is a pacifistic form of autocracy, where the ruler is viewed as an enlightened protector that always acts in the best interests of the citizenry.',
+              rulerTitle: 'King',
               image: 'http://www.stellariswiki.com/images/2/2b/Enlightened_Monarchy.png',
               unlocked: ['Pacifist', 'Fanatic Pacifist'],
               locked: ['Individualist', 'Fanatic Individualist'],
@@ -87,7 +87,7 @@ export default {
                 { name: 'Edict Cost', value: -25, postfix: '%', positive: true},
                 { name: 'Planetary Edict Duration', value: 25, postfix: '%', positive: true},
                 { name: 'Core Sector Planets', value: 1, positive: true},
-                { name: 'Can build a special park building, which grants +10% happiness on the planet on which it is built'},
+                { name: 'Can build a Royal Gardens, which grants +10 Mod pop happiness.png happiness on the planet it is built'},
               ]
             },
             {
@@ -119,18 +119,19 @@ export default {
               effects: [
                 { name: 'Ship Cost', value: -10, postfix: '%', positive: true},
                 { name: 'Ship Upgrade Cost', value: -25, postfix: '%', positive: true},
-                { name: 'Admirals/generals are eligible for rulership'},
+                { name: 'Admirals and generals are eligible for rulership'},
               ]
             },
             {
               name: 'Theocratic Oligarchy',
-              description: '',
+              description: 'This government is a spiritualistic form of oligarchy, where a divinely guided council made up of clergy controls the state. No division exists between the state and the dominant organized religion.',
               rulerTitle: 'Inquisitor',
               image: 'http://www.stellariswiki.com/images/5/57/Theocratic_Oligarchy.png',
               unlocked: ['Spiritualist', 'Fanatic Spiritualist'],
               locked: ['Fanatic Collectivist', 'Fanatic Individualist'],
               effects: [
                 { name: 'Ethics Divergence', value: -10, postfix: '%', positive: true},
+                { name: 'Leader Recruitment Cost', value: -15, postfix: '%', positive: true},
               ]
             },
             {
@@ -142,6 +143,7 @@ export default {
               locked: ['Fanatic Collectivist', 'Fanatic Individualist'],
               effects: [
                 { name: 'Research alternatives', value: 1, positive: true},
+                { name: 'Empire leader capacity', value: 1, positive: true},
                 { name: 'Scientists are eligible for rulership'},
               ]
             },
@@ -153,7 +155,8 @@ export default {
               unlocked: ['Pacifist', 'Fanatic Pacifist'],
               locked: ['Fanatic Collectivist', 'Fanatic Individualist'],
               effects: [
-                { name: 'Leader capacity', value: 4, positive: true},
+                { name: 'Leader pool size', value: 1, positive: true},
+                { name: 'Empire leader capacity', value: 1, positive: true},
                 { name: 'Leader Recruitment Cost', value: -15, postfix: '%', positive: true},
               ]
             },
@@ -165,7 +168,7 @@ export default {
               unlocked: [],
               locked: ['Fanatic Collectivist', 'Fanatic Individualist'],
               effects: [
-                { name: 'Energy credits', value: 5, postfix: '%', positive: true},
+                { name: 'Energy Credits', value: 5, postfix: '%', positive: true},
                 { name: 'Minerals', value: 5, postfix: '%', positive: true},
               ]
             },
@@ -176,27 +179,28 @@ export default {
           components: [
             {
               name: 'Military Republic',
-              description: '',
+              description: 'This government is a militaristic form of democracy, where full citizenship can only be gained through military service. The voting franchise is limited to full citizens, and they are the only ones allowed to hold public offices.',
               rulerTitle: 'Consul',
               image: 'http://www.stellariswiki.com/images/b/b8/Military_Republic.png',
               unlocked: ['Militarist', 'Fanatic Militarist'],
               locked: ['Collectivist', 'Fanatic Collectivist'],
               effects: [
-                { name: 'Army Upkeep', value: -15, postfix: '%', positive: true},
-                { name: 'Ship Upkeep', value: -15, postfix: '%', positive: true},
-                { name: 'War Tolerance', value: 25, postfix: '%', positive: true},
-                { name: 'Admirals/generals are eligible for rulership'},
+                { name: 'Army Upkeep', value: -10, postfix: '%', positive: true},
+                { name: 'Ship Upkeep', value: -10, postfix: '%', positive: true},
+                { name: 'War Tolerance', value: 5, postfix: '%', positive: true},
+                { name: 'Admirals and generals are eligible for rulership'},
               ]
             },
             {
               name: 'Theocratic Republic',
-              description: '',
-              rulerTitle: '',
+              description: 'This government is a spiritualistic form of democracy, where a religious council supervises the democratic process and serves in an advisory role.',
+              rulerTitle: 'Reverend Elder',
               image: 'http://www.stellariswiki.com/images/9/9f/Theocratic_Republic.png',
               unlocked: ['Spiritualist', 'Fanatic Spiritualist'],
               locked: ['Collectivist', 'Fanatic Collectivist'],
               effects: [
                 { name: 'Ethics Divergence', value: -10, postfix: '%', positive: true},
+                { name: 'Core Sector Planets', value: 2, positive: true},
               ]
             },
             {
@@ -207,13 +211,13 @@ export default {
               unlocked: ['Materialist', 'Fanatic Materialist'],
               locked: ['Collectivist', 'Fanatic Collectivist'],
               effects: [
-                { name: ' Core Sector Planets', value: 4, positive: true},
+                { name: 'Core Sector Planets', value: 2, positive: true},
               ]
             },
             {
               name: 'Moral Democracy',
               description: 'This government is a pacifistic form of democracy, firmly guided by moralist principles and non-violence.',
-              rulerTitle: '',
+              rulerTitle: 'Prime Minister',
               image: 'http://www.stellariswiki.com/images/6/67/Moral_Democracy.png',
               unlocked: ['Pacifist', 'Fanatic Pacifist'],
               locked: ['Collectivist', 'Fanatic Collectivist'],
@@ -230,7 +234,7 @@ export default {
               locked: ['Collectivist', 'Fanatic Collectivist'],
               effects: [
                 { name: 'Leader Skill Levels', value: 1, positive: true},
-                { name: 'Leader Recruitment Costs', value: -10, postfix: '%', positive: true},
+                { name: 'Leader Recruitment Cost', value: -10, postfix: '%', positive: true},
               ]
             },
           ]

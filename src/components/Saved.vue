@@ -20,6 +20,7 @@
     props: [
       'speciesName',
       'empireName',
+      'empireDescription',
       'chosenEthics',
       'chosenGovernment',
       'chosenTraits'
@@ -41,6 +42,9 @@
       loadItem(item) {
         this.speciesName = item.speciesName;
         this.empireName = item.empireName;
+
+        if (item.version > 1) this.empireDescription = item.empireDescription;
+
         this.chosenEthics = item.chosenEthics;
         this.chosenGovernment = item.chosenGovernment;
         this.chosenTraits = item.chosenTraits;

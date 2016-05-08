@@ -19,6 +19,7 @@
     <router-view
       :species-name.sync="speciesName"
       :empire-name.sync="empireName"
+      :empire-description.sync="empireDescription"
       :chosen-ethics.sync="chosenEthics"
       :chosen-government.sync="chosenGovernment"
       :chosen-traits.sync="chosenTraits"
@@ -39,6 +40,7 @@ export default {
       preview: {},
       speciesName: '',
       empireName: '',
+      empireDescription: '',
       chosenEthics: [],
       chosenGovernment: [],
       chosenTraits: [],
@@ -53,6 +55,7 @@ export default {
     reset() {
       this.speciesName = '';
       this.empireName = '';
+      this.empireDescription = '';
       this.chosenEthics = [];
       this.chosenGovernment = [];
       this.chosenTraits = [];
