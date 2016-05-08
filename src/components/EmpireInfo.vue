@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   .EmpireInfo { text-align: center; }
 
   .EmpireInfo__item {

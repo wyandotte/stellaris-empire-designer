@@ -20,6 +20,8 @@
       :species-name.sync="speciesName"
       :empire-name.sync="empireName"
       :empire-description.sync="empireDescription"
+      :planet-name.sync="planetName"
+      :chosen-planet.sync="chosenPlanet"
       :chosen-ethics.sync="chosenEthics"
       :chosen-government.sync="chosenGovernment"
       :chosen-traits.sync="chosenTraits"
@@ -41,6 +43,8 @@ export default {
       speciesName: '',
       empireName: '',
       empireDescription: '',
+      planetName: '',
+      chosenPlanet: {},
       chosenEthics: [],
       chosenGovernment: [],
       chosenTraits: [],
@@ -56,6 +60,8 @@ export default {
       this.speciesName = '';
       this.empireName = '';
       this.empireDescription = '';
+      this.planetName = '';
+      this.chosenPlanet = {};
       this.chosenEthics = [];
       this.chosenGovernment = [];
       this.chosenTraits = [];

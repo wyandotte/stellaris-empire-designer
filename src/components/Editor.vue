@@ -5,6 +5,7 @@
   </p>
 
   <empire-info :species-name.sync="speciesName" :empire-name.sync="empireName" :empire-description.sync="empireDescription"></empire-info>
+  <planet :planet-name.sync="planetName" :chosen-planet.sync="chosenPlanet"></planet>
   <ethos-picker :chosen-ethics.sync="chosenEthics"></ethos-picker>
   <government-picker :chosen-ethics="chosenEthics" :chosen-government.sync="chosenGovernment"></government-picker>
   <trait-picker :chosen-traits.sync="chosenTraits"></trait-picker>
@@ -16,6 +17,7 @@
 
 <script>
 import EmpireInfo from './EmpireInfo'
+import Planet from './Planet'
 import EthosPicker from './EthosPicker'
 import GovernmentPicker from './GovernmentPicker'
 import TraitPicker from './TraitPicker'
@@ -26,6 +28,8 @@ import AppFooter from './AppFooter'
      'speciesName',
      'empireName',
      'empireDescription',
+     'planetName',
+     'chosenPlanet',
      'chosenEthics',
      'chosenGovernment',
      'chosenTraits'
@@ -33,6 +37,7 @@ import AppFooter from './AppFooter'
 
    components: {
      EmpireInfo,
+     Planet,
      EthosPicker,
      GovernmentPicker,
      TraitPicker,
@@ -64,6 +69,8 @@ import AppFooter from './AppFooter'
          speciesName: this.speciesName,
          empireName: this.empireName,
          empireDescription: this.empireDescription,
+         planetName: this.planetName,
+         chosenPlanet: this.chosenPlanet,
          chosenEthics: this.chosenEthics,
          chosenGovernment: this.chosenGovernment,
          chosenTraits: this.chosenTraits

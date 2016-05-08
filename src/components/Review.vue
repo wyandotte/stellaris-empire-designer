@@ -17,13 +17,20 @@
     </span>
   </div>
 
-  <h3>{{ speciesName }}</h3>
+  <div class="clearfix">
+    <div class="half">
+      <h3 @mouseover="updatePreview({name: 'Species name'})">{{ speciesName }}</h3>
 
-  <div>
-    <p v-for="trait in chosenTraits" @mouseover="updatePreview(trait)">
-      <img :src="trait.image" :alt="trait.name" class="Ethos__image">
-      <span>{{ trait.name }}</span>
-    </p>
+      <p v-for="trait in chosenTraits" @mouseover="updatePreview(trait)">
+        <img :src="trait.image" :alt="trait.name" class="Ethos__image">
+        <span>{{ trait.name }}</span>
+      </p>
+    </div>
+    <div class="half">
+      <h3 @mouseover="updatePreview({name: 'Home Planet name'})">{{ planetName }}</h3>
+
+      <img :src="chosenPlanet.image" alt="chosenPlanet.name" class="Planet" @mouseover="updatePreview(chosenPlanet)">
+    </div>
   </div>
 </template>
 
@@ -33,6 +40,8 @@
       'speciesName',
       'empireName',
       'empireDescription',
+      'planetName',
+      'chosenPlanet',
       'chosenEthics',
       'chosenGovernment',
       'chosenTraits'
@@ -65,6 +74,8 @@
           speciesName: this.speciesName,
           empireName: this.empireName,
           empireDescription: this.empireDescription,
+          planetName: this.planetName,
+          chosenPlanet: this.chosenPlanet,
           chosenEthics: this.chosenEthics,
           chosenGovernment: this.chosenGovernment,
           chosenTraits: this.chosenTraits
@@ -82,4 +93,16 @@
   .Review__help { text-align: center; }
 
   .Button { float: right; }
+
+  .clearfix {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .half {
+    width: 50%;
+    float: left;
+  }
+
+  .Planet { width: 200px; }
 </style>
