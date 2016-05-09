@@ -146,6 +146,9 @@ body {
   margin: 0 auto;
 }
 
+.Button--secondary { background-color: #aaa; }
+.Button--secondary:hover { background-color: #999; }
+
 .Button--delete { background-color: #D10000; }
 .Button--delete:hover { background-color: #AA0000; }
 </style>

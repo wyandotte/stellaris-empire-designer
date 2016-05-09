@@ -1,5 +1,6 @@
 <template>
-  <a href="#" class="Button" v-if="empireName && speciesName" @click="saveEmpire()" @mouseover="updatePreview({name: 'Save Empire', description: 'An exisiting empire with the same name will be overwritten'})">Save</a>
+  <a class="Button" v-if="empireName && speciesName" @click="saveEmpire()" @mouseover="updatePreview({name: 'Save Empire', description: 'An exisiting empire with the same name will be overwritten'})">Save</a>
+  <a class="Button Button--secondary" @click="shareEmpire()" @mouseover="updatePreview({name: 'Share Empire', description: 'A link with your empire will be copied to your clipboard'})">Share</a>
 
   <div v-show="nothingFilledOut" class="Review__help">
     Here all aspects of your Empire will be shown.
@@ -29,12 +30,14 @@
     <div class="half">
       <h3 @mouseover="updatePreview({name: 'Home Planet name'})">{{ planetName }}</h3>
 
-      <img :src="chosenPlanet.image" alt="chosenPlanet.name" class="Planet" @mouseover="updatePreview(chosenPlanet)">
+      <img :src="chosenPlanet.image" alt="chosenPlanet.name" class="Planet" @mouseover="updatePreview(chosenPlanet)" v-show="chosenPlanet.name">
     </div>
   </div>
 </template>
 
 <script>
+  import querystring from 'querystring'
+
   export default {
     props: [
       'speciesName',
@@ -82,6 +85,47 @@
         }));
       },
 
+      shareEmpire() {
+        const traitList = this.chosenTraitList();
+        const ethicsList = this.chosenEthicsList();
+
+        const shareQueryString = querystring.stringify({
+          version: 2,
+          speciesName: this.speciesName,
+          empireName: this.empireName,
+          empireDescription: this.empireDescription,
+          planetName: this.planetName,
+          chosenPlanet: this.chosenPlanet.name,
+          chosenEthics: ethicsList,
+          chosenGovernment: this.chosenGovernment.name,
+          chosenTraits: traitList
+        });
+
+        alert(`${window.location.protocol}//${window.location.host}/#!/share/${shareQueryString}`);
+      },
+
+      chosenEthicsList() {
+        let ethicsList = [];
+        const ethics = this.chosenEthics;
+
+        for (let i = 0; i < ethics.length; i++ ) {
+          ethicsList.push(ethics[i].name);
+        }
+
+        return ethicsList;
+      },
+
+      chosenTraitList() {
+        let traitList = [];
+        const traits = this.chosenTraits;
+
+        for (let i = 0; i < traits.length; i++ ) {
+          traitList.push(traits[i].name);
+        }
+
+        return traitList;
+      },
+
       updatePreview(item) {
         this.$dispatch('preview', item);
       }
@@ -93,6 +137,8 @@
   .Review__help { text-align: center; }
 
   .Button { float: right; }
+
+  .Button:not(:first-child) { margin-left: 15px; }
 
   .clearfix {
     width: 100%;
