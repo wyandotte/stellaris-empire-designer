@@ -1,7 +1,7 @@
 <template>
   <p class="Buttons">
     <a class="Button Button--delete" @click="reset()" @mouseover="$dispatch('preview', {'name': 'Clear selection', description: 'This will reset everything'})" v-if="empireName || speciesName || chosenEthics.length > 0 || chosenGovernment.length > 0 || chosenTraits.length > 0">Reset</a>
-    <a class="Button" @click="save()" @mouseover="$dispatch('preview', {'name': 'Save Empire', description: 'An exisiting empire with the same name will be overwritten'})" v-if="empireName || speciesName">Save</a>
+    <a class="Button" @click="save()" @mouseover="$dispatch('preview', {'name': 'Save Empire', description: 'An exisiting empire with the same name will be overwritten'})" v-if="empireName && speciesName">Save</a>
   </p>
 
   <empire-info :species-name.sync="speciesName" :empire-name.sync="empireName" :empire-description.sync="empireDescription"></empire-info>

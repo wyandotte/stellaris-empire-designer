@@ -1,6 +1,6 @@
 <template>
   <a class="Button" v-if="empireName && speciesName" @click="saveEmpire()" @mouseover="updatePreview({name: 'Save Empire', description: 'An exisiting empire with the same name will be overwritten'})">Save</a>
-  <a class="Button Button--secondary" @click="shareEmpire()" @mouseover="updatePreview({name: 'Share Empire', description: 'A link with your empire will be copied to your clipboard'})">Share</a>
+  <a class="Button Button--secondary" v-if="empireName && speciesName" @click="shareEmpire()" @mouseover="updatePreview({name: 'Share Empire', description: 'A link with your empire will be copied to your clipboard'})">Share</a>
 
   <div v-show="nothingFilledOut" class="Review__help">
     Here all aspects of your Empire will be shown.
